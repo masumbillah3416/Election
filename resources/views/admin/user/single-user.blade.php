@@ -59,8 +59,6 @@
                         <td class="word-break">{{ $user->email }}</td>
                         <td class="word-break">@if ($user->status == true)<button type="button" class="btn btn-success">Verified</button>  @else <a href="{{ route('varify-user',$user->id) }}"><button type="button" class="btn btn-danger">Pending</button></a>   @endif</td>
 
-
-
                     </tr>
                     @endforeach
 
