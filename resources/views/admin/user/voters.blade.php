@@ -9,7 +9,7 @@
     <div class="card-header py-3 bg-abasas-dark">
         <nav class="navbar  ">
 
-            <div class="navbar-brand"><span id="eventList"> Users of {{ $campus->name }}</span> </div>
+            <div class="navbar-brand"><span id="eventList"> Voters of {{ $campus->name }}</span> </div>
 
 
 
@@ -27,7 +27,11 @@
                         <th>Name</th>
                         <th>Phone</th>
                         <th>Email</th>
-                        <th>Status</th>
+                        @if( Auth::user()->isAdmin())
+
+                            <th>Status</th>
+                        
+                        @endif
 
                     </tr>
                 </thead>
@@ -37,8 +41,12 @@
                         <th> #</th>
                         <th>Name</th>
                         <th>Phone</th>
-                        <th>Email</th>
+                        <th>Email</th> 
+                         @if( Auth::user()->isAdmin())
+
                         <th>Status</th>
+                    
+                    @endif
 
                     </tr>
 
@@ -57,8 +65,10 @@
                         <td class="word-break">{{ $user->name }}</td>
                         <td class="word-break">{{ $user->phone }}</td>
                         <td class="word-break">{{ $user->email }}</td>
+                        
+                        @if( Auth::user()->isAdmin())
                         <td class="word-break">@if ($user->status == true)<button type="button" class="btn btn-success">Verified</button>  @else <a href="{{ route('varify-user',$user->id) }}"><button type="button" class="btn btn-danger">Pending</button></a>   @endif</td>
-
+@endif
                     </tr>
                     @endforeach
 
