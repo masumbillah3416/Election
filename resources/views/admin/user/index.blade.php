@@ -10,7 +10,7 @@
     <div class="card-header py-3 bg-abasas-dark">
         <nav class="navbar  ">
 
-            <div class="navbar-brand"><span id="eventList"> Users of {{ $campus->name }}</span> </div>
+            <div class="navbar-brand"><span id="eventList"> Voter of {{ $campus->name }}</span> </div>
 
 
 

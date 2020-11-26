@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Support\Facades\Auth;
 
-class Commissioner
+class adminCommissioner
 {
     /**
      * Handle an incoming request.
@@ -16,12 +16,10 @@ class Commissioner
      */
     public function handle($request, Closure $next)
     {
-        
-        if(Auth::user()->isCommissioner() ){
+        if(Auth::user()->isAdmin() || Auth::user()->isCommissioner()){
 
             return $next($request);
         }
-        return "you are not allowed ";
-        
+        return "not Allowed";
     }
 }

@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Auth;
 
 class User extends Authenticatable
 {
@@ -38,5 +39,31 @@ class User extends Authenticatable
     ];
     public function campus(){
         return $this->belongsTo('App\campus','campus_id','id');
+    }
+
+    public function isAdmin(){
+       if(Auth::user()->role_id==2){
+           return 1;
+       }
+       return 0;
+
+    }
+    public function isCommissioner(){
+        if(Auth::user()->role_id==3){
+            return 1;
+        }
+        return 0;  
+    }
+    public function isVoter(){
+        if(Auth::user()->role_id==1 && Auth::user()->status==1 ){
+            return 1;
+        }
+        return 0;
+    }
+    public function isNotVoter(){
+        if(Auth::user()->role_id==1 && Auth::user()->status==0 ){
+            return 1;
+        }
+        return 0;
     }
 }

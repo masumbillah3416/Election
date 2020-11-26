@@ -20,14 +20,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/','IndexController@index')->name('home');
 
-
+Route::get('/admin/elections/{campus}','ElectionController@elections')->name('elections')->middleware('commissioner');
+Route::get('/admin/voters','UserController@voters')->name('voters')->middleware('adminCommissioner');
 
 Route::get('/admin','AdminController@index')->name('admin');
-Route::get('/admin/all-users/{campus}','UserController@getUsers')->name('all-users');
-Route::get('/admin/election/{campus}','ElectionController@election')->name('election');
 
 
-Route::get('/admin/user','UserController@campusUser')->name('single-user');
 Route::get('/admin/varify-user/{id}','UserController@varifyUser')->name('varify-user');
 
 Auth::routes();

@@ -88,7 +88,7 @@ class ElectionController extends Controller
 
 
 
-    public function election($campus)
+    public function elections($campus)
     {
         $center= '';
         if($campus== 'sec'){
