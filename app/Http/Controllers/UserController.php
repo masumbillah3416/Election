@@ -88,62 +88,65 @@ class UserController extends Controller
 
     public function getUsers($campus)
     {
-        if($campus== 'sec'){
-            $campus_id=1;
-        }
-        elseif ($campus== 'mec'){
-            $campus_id=2; 
-        }
-        elseif ($campus== 'fec'){
-            $campus_id=3; 
-        }
-        elseif ($campus== 'bec'){
-            $campus_id=4; 
-        }
-        else{
+        if ($campus == 'sec') {
+            $campus_id = 1;
+        } elseif ($campus == 'mec') {
+            $campus_id = 2;
+        } elseif ($campus == 'fec') {
+            $campus_id = 3;
+        } elseif ($campus == 'bec') {
+            $campus_id = 4;
+        } else {
             abort(404);
         }
 
-        $users= User::where('campus_id',$campus_id)->where('status',true)->get();
-        $campus= campus::find($campus_id);
+        $users = User::where('campus_id', $campus_id)->where('status', true)->get();
+        $campus = campus::find($campus_id);
 
-        return view('admin.user.index',compact('campus','users'));
-        
-
-        
+        return view('admin.user.index', compact('campus', 'users'));
     }
     public function voters(Request $request)
     {
 
-        if(Auth::user()->isAdmin()){
+        if (Auth::user()->isAdmin()) {
 
-        $campus_id = Auth::user()->campus_id;
-        $users= User::where('campus_id',$campus_id)->where('role_id',1)->get();
-        $campus= campus::find($campus_id);
-        }
-
-        else if(Auth::user()->isCommissioner()){
-            
-        $users= User::where('campus_id',$request->campus_id)->where('role_id',1)->get();
-        $campus= campus::find($request->campus_id);
-        }
-        else{
+            $campus_id = Auth::user()->campus_id;
+            $users = User::where('campus_id', $campus_id)->where('role_id', 1)->get();
+            $campus = campus::find($campus_id);
+        } else if (Auth::user()->isCommissioner()) {
+            if($request->campus_id <1 || $request->campus_id >4){
+                abort(404);
+            }
+            $users = User::where('campus_id', $request->campus_id)->where('role_id', 1)->get();
+            $campus = campus::find($request->campus_id);
+        } else {
             abort(404);
         }
 
 
-        
-        return view('admin.user.voters',compact('campus','users'));
+
+        return view('admin.user.voters', compact('campus', 'users'));
     }
 
-    
+
     public function varifyUser($id)
     {
         $user = User::find($id);
+        if (is_null($user) || Auth::user()->campus_id!= $user->campus_id) {
+            return abort(404);
+        }
         $user->status = true;
         $user->save();
         return Redirect::back()->withSuccess(['User varified']);
     }
-
-
+    public function cancelVarify($id)
+    {
+        $user = User::find($id);
+        if (is_null($user)   || Auth::user()->campus_id!= $user->campus_id ) {
+            return abort(404);
+        }
+        $user->status = False;
+        $user->save();
+        return Redirect::back()->withError(['Varification Canceled']);
+    }
 }

@@ -67,7 +67,7 @@
                         <td class="word-break">{{ $user->email }}</td>
                         
                         @if( Auth::user()->isAdmin())
-                        <td class="word-break">@if ($user->status == true)<button type="button" class="btn btn-success">Verified</button>  @else <a href="{{ route('varify-user',$user->id) }}"><button type="button" class="btn btn-danger">Pending</button></a>   @endif</td>
+                        <td class="word-break">@if ($user->status == true) <a href="{{ route('cancel-varification',$user->id) }}"><button type="button" class="btn btn-success">Verified</button></a>  @else <a href="{{ route('varify-user',$user->id) }}"><button type="button" class="btn btn-danger">Pending</button></a>   @endif</td>
 @endif
                     </tr>
                     @endforeach
