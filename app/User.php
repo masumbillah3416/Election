@@ -36,4 +36,7 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    public function campus(){
+        return $this->belongsTo('App\campus','campus_id','id');
+    }
 }

@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\candidate;
-use App\designation;
-use App\election;
+use App\campus;
+use App\User;
 use Illuminate\Http\Request;
-use Illuminate\Routing\SortedMiddleware;
+use Illuminate\Support\Facades\Redirect;
 
-class ElectionController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -44,10 +43,10 @@ class ElectionController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\election  $election
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(election $election)
+    public function show($id)
     {
         //
     }
@@ -55,10 +54,10 @@ class ElectionController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\election  $election
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(election $election)
+    public function edit($id)
     {
         //
     }
@@ -67,10 +66,10 @@ class ElectionController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\election  $election
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, election $election)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -78,62 +77,55 @@ class ElectionController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\election  $election
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(election $election)
+    public function destroy($id)
     {
         //
     }
 
-
-
-    public function election($campus)
+    public function getUsers($campus)
     {
-        $center= '';
         if($campus== 'sec'){
-            $election_id=1;
-            $center = 'Sylhet Engineering College';
-
+            $campus_id=1;
         }
         elseif ($campus== 'mec'){
-            $election_id=2; 
-            $center = 'Mymensingh Engineering College';
-
+            $campus_id=2; 
         }
         elseif ($campus== 'fec'){
-            $election_id=3; 
-            $center = 'Faridpur Engineering College';
-
+            $campus_id=3; 
         }
         elseif ($campus== 'bec'){
-            $election_id=4; 
-            $center = 'Barishal Engineering College';
-
-        }
-        elseif ($campus== 'central'){
-            $election_id=5; 
-            $center = 'Central';
-
+            $campus_id=4; 
         }
         else{
             abort(404);
         }
 
-        $candidates= candidate:: where('election_id',$election_id)->get();
-        
-        foreach ($candidates as $candidate ) {
-            $candidate->votes_count = $candidate->votes->count();
-        }
+        $users= User::where('campus_id',$campus_id)->where('status',true)->get();
+        $campus= campus::find($campus_id);
 
-        $candidates= $candidates->sortByDesc('votes_count')->groupBy('desgnation_id');
-
-        $designations = designation::all();
-        // isset($candidates[2])
+        return view('admin.user.index',compact('campus','users'));
         
-        return view('admin.election.index',compact('candidates','designations','center'));
+
         
     }
+    public function campusUser()
+    {
+        $campus_id = 1;
+        $users= User::where('campus_id',$campus_id)->get();
+        $campus= campus::find($campus_id);
 
+        return view('admin.user.single-user',compact('campus','users'));
+    }
 
+    
+    public function varifyUser($id)
+    {
+        $user = User::find($id);
+        $user->status = true;
+        $user->save();
+        return Redirect::back()->withSuccess(['User varified']);
+    }
 }
