@@ -18,12 +18,12 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-Route::get('/','IndexController@index')->name('home');
+Route::get('/','IndexController@index')->name('index')->middleware('auth');
 
 Route::get('/admin/elections/{campus}','ElectionController@elections')->name('elections')->middleware('commissioner');
 Route::get('/admin/voters','UserController@voters')->name('voters')->middleware('adminCommissioner');
 
-Route::get('/admin','AdminController@index')->name('admin');
+Route::get('/admin','AdminController@index')->name('admin')->middleware('adminCommissioner');
 
 
 Route::get('/admin/varify-user/{id}','UserController@varifyUser')->name('varify-user');

@@ -67,5 +67,6 @@ class Kernel extends HttpKernel
         'commissioner' =>  \App\Http\Middleware\Commissioner::class,
         'voter' =>  \App\Http\Middleware\Commissioner::class,
         'voter' =>  \App\Http\Middleware\Commissioner::class,
+        'adminCommissioner' =>  \App\Http\Middleware\adminCommissioner::class,
     ];
 }
