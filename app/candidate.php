@@ -15,6 +15,9 @@ class candidate extends Model
     }
     public function center(){
         return $this->belongsTo('App\election','election_id','id');
+    } 
+   public function campus(){
+        return $this->belongsTo('App\campus');
     }
 
 }

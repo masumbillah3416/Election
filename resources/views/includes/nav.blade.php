@@ -12,21 +12,49 @@ style="
 >
 
 
-<nav class="navbar   ">
-	<span class="navbar-brand mb-0 h1 "> <a href="{{ route('home') }}" class="text-light"> <h1>Election 2020</h1></a></span>
+<nav class="navbar   justify-content-between navbar-expand-lg  ">
+
+
+
+ <a href="{{ route('index') }}" class="text-light navbar-brand"> 
 	
-<div>
-	@guest
-	<a class="nav-link text-light" href="{{ route('login') }}">{{ __('Login') }}</a>
-	@else
-	<a class="dropdown-item text-light	 border border-light" href="{{ route('logout') }}"
-	onclick="event.preventDefault();
-				  document.getElementById('logout-form').submit();">
-	 {{ __('Logout') }}
- </a>
-	@endguest
-</div>
+		
+		{{ $election->name ??'Election 2020'  }}
+	
+</a></span>
+
+
+	<div class="" id="navbarSupportedContent">
+		<ul class="navbar-nav mr-auto">
+		  <li class="nav-item active">
+			@guest
+			<a class="nav-link text-light" href="{{ route('login') }}">{{ __('Login') }}</a>
+			@else
+			<a class="dropdown-item text-light	 border border-light" href="{{ route('logout') }}"
+			onclick="event.preventDefault();
+						  document.getElementById('logout-form').submit();">
+			 {{ __('Logout') }}
+		 </a>
+			@endguest
+		  </li>
+		
+		</ul>
+		
+	  </div>
+
+
+
 </nav>
+
+
+
+
+
+
+
+
+
+
 
 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
 	@csrf

@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\campusDesignation;
 use App\candidate;
+use App\centralDesignation;
 use App\designation;
 use App\election;
 use Illuminate\Http\Request;
@@ -140,14 +142,18 @@ class ElectionController extends Controller
     public function electionsView(Request $request){
         $user= Auth::user();
         
+        
         if($request->id && $user->isVoter()){
            if($request->id==5){
                $election = election::find(5);
+               $designations= centralDesignation::all();
            }
            else{
             $election = election::find($user->campus_id);
+            
+            $designations= campusDesignation::all();
            }
-           return view('election.show',compact('election'));
+           return view('election.show',compact('election','designations'));
 
         }
         else{

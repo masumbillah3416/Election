@@ -3,6 +3,7 @@
 use App\campus;
 use App\campusDesignation;
 use App\candidate;
+use App\centralDesignation;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
@@ -90,6 +91,41 @@ Route::get('data-insert',function(){
         }
 
 
+    }
+
+
+    
+   $centralDesignations = centralDesignation::all();
+
+   foreach($centralDesignations as $centralDesignation){
+    DB::table('candidates')->insert([
+        [
+            'user_id'=> rand(6,$high),
+            'designation_id'=>$centralDesignation->id,
+            'election_id' => 5,
+            'image' =>"https://www.w3schools.com/howto/img_avatar.png",
+        ],
+        [
+            'user_id'=> rand(6,$high),
+            'designation_id'=>$centralDesignation->id,
+            'election_id' => 5,
+            'image' =>"https://www.w3schools.com/howto/img_avatar.png",
+        ],
+        [
+            'user_id'=> rand(6,$high),
+            'designation_id'=>$centralDesignation->id,
+            'election_id' => 5,
+            'image' =>"https://www.w3schools.com/howto/img_avatar.png",
+        ],
+        [
+            'user_id'=> rand(6,$high),
+            'designation_id'=>$centralDesignation->id,
+            'election_id' => 5,
+            'image' =>"https://www.w3schools.com/howto/img_avatar.png",
+        ],  
+     
+
+    ]);
     }
     return candidate::all();
 
