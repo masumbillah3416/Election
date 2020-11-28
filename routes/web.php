@@ -4,6 +4,8 @@ use App\campus;
 use App\campusDesignation;
 use App\candidate;
 use App\centralDesignation;
+use App\election;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
@@ -38,7 +40,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/elections','ElectionController@electionsView')->name('electionsView')->middleware('voter');
 
 
-
+Route::get('electionstatus','ElectionController@statusUp'
+)->name('electionStatus')->middleware('auth');
 
 Route::get('data-insert',function(){
 

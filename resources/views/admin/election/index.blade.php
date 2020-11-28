@@ -9,7 +9,15 @@
         <nav class="navbar  ">
 
             <div class="navbar-brand"><span id="eventList ">Election Of {{ $center }}</span> </div>
-
+           
+          {{-- @if($election->status) 
+          
+          <a href="{{ route('electionStatus') }}?id={{ $election->id }}" class="text-light"><button  class="btn btn-danger" >Stop</button></a>
+          @else
+             
+          <a href="{{ route('electionStatus') }}?id={{ $election->id }}" class="text-light"><button  class="btn btn-success" >Start</button></a>
+        
+            @endif --}}
         </nav>
     </div>
     @foreach ($designations as $designation)
@@ -23,8 +31,7 @@
         </nav>
     </div>
     <div class="card-body">
-            
-        
+   
         <div class="table-responsive">
             <table class="table table-striped table-bordered DataTableTest" id="dataTable" width="100%" cellspacing="0">
                 <thead class="bg-abasas-dark">
@@ -32,9 +39,9 @@
                     <tr>
 
                         <th> #</th>
-                        <th> Image</th>
+                        <th> Name</th>
 
-                        <th>Name</th>
+                        <th>Designation</th>
                         <th>Campus</th>
                         <th>Votes</th>
 
@@ -44,9 +51,9 @@
                     <tr>
 
                         <th> #</th>
-                        <th> Image</th>
+                        <th> Name</th>
 
-                        <th>Name</th>
+                        <th>Designation</th>
                         <th>Campus</th>
                         <th>Votes</th>
 
@@ -60,16 +67,22 @@
                     $itr=1;
                     $id = $designation->id;
                     @endphp
-                    @if (isset($candidates[$id]))
-                        
-                    @foreach ($candidates[$id] as $candidate)
 
+        
+  
+             
+                    {{-- @if (isset($candidates[$id])) --}}
+                     
+    @foreach ($candidates  as $ca)   
+                    @foreach ($ca as $candidate)
 
+                    @if($candidate->designation_id ==$designation->id )
                     <tr class="data-row">
                         <td class="iteration">{{$itr++}}</td>
-                        <td class="word-break">{{ $candidate->image}}</td>
-                        <td class="word-break">{{ $candidate->user->name }}</td>
-                        <td class="word-break">{{ $candidate->center->name }}</td>
+                        {{-- <td class="word-break"><img src="{{ $candidate->image}}" alt="{{ $candidate->user->name }}" height="50px">  {{ $candidate->user->name }}</td> --}}
+                        <td class="word-break"><img src="{{asset('img/khan.JPG')}}" alt="{{ $candidate->user->name }}" height="50px">  {{ $candidate->user->name }}</td>
+                        <td class="word-break">{{ $designation->name }}</td>
+                        <td class="word-break">{{ $candidate->user->campus->name }}</td>
                         <td class="word-break">{{ $candidate->votes_count }}</td>
 
 
@@ -77,9 +90,11 @@
 
 
                     </tr>
-                    @endforeach
                     @endif
-
+                    @endforeach
+                    {{-- @endif --}}
+       
+                    @endforeach   
                 </tbody>
 
 

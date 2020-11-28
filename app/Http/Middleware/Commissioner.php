@@ -21,6 +21,7 @@ class Commissioner
 
             return $next($request);
         }
+        else
         abort(404);
         
     }
