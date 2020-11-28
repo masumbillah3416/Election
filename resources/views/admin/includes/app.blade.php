@@ -113,14 +113,7 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
-    <script>
-        $(document).ready(function () {
-
-            $('[data-toggle="tooltip"]').tooltip();
-
-        });
-
-    </script>
+   
 </head>
 
 
