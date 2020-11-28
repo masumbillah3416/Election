@@ -79,8 +79,8 @@
                     @if($candidate->designation_id ==$designation->id )
                     <tr class="data-row">
                         <td class="iteration">{{$itr++}}</td>
-                        {{-- <td class="word-break"><img src="{{ $candidate->image}}" alt="{{ $candidate->user->name }}" height="50px">  {{ $candidate->user->name }}</td> --}}
-                        <td class="word-break"><img src="{{asset('img/khan.JPG')}}" alt="{{ $candidate->user->name }}" height="50px">  {{ $candidate->user->name }}</td>
+                        <td class="word-break"><img src="{{ $candidate->image}}" alt="{{ $candidate->user->name }}" height="50px">  {{ $candidate->user->name }}</td>
+                        {{-- <td class="word-break"><img src="{{asset('img/khan.JPG')}}" alt="{{ $candidate->user->name }}" height="50px">  {{ $candidate->user->name }}</td> --}}
                         <td class="word-break">{{ $designation->name }}</td>
                         <td class="word-break">{{ $candidate->user->campus->name }}</td>
                         <td class="word-break">{{ $candidate->votes_count }}</td>
