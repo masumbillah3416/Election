@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\campus;
-use App\election;
+use App\campusDesignation;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
-class IndexController extends Controller
+class CampusDesignationController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,16 +14,7 @@ class IndexController extends Controller
      */
     public function index()
     {
-        $user= Auth::user();
-        if($user->isVoter() )
-        {
-
-            $campus= election::find($user->campus_id);
-            $central = election::find(5);
-            return view('index',compact('campus','central'));
-        }
-        return redirect(route('admin'));
-        
+        //
     }
 
     /**
@@ -52,10 +41,10 @@ class IndexController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\campusDesignation  $campusDesignation
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(campusDesignation $campusDesignation)
     {
         //
     }
@@ -63,10 +52,10 @@ class IndexController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\campusDesignation  $campusDesignation
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(campusDesignation $campusDesignation)
     {
         //
     }
@@ -75,10 +64,10 @@ class IndexController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\campusDesignation  $campusDesignation
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, campusDesignation $campusDesignation)
     {
         //
     }
@@ -86,10 +75,10 @@ class IndexController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\campusDesignation  $campusDesignation
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(campusDesignation $campusDesignation)
     {
         //
     }

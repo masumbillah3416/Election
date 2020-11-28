@@ -16,9 +16,9 @@
 
 
 
-
-    <section class="container pt-4 border border-dark mt-4 mb-4">
-        <nav class="navbar navbar-light bg-abasas-dark">
+@if($central->status==1)
+    <section class="container pt-4 border border-dark rounded mt-4 mb-4">
+        <nav class="navbar navbar-light bg-abasas-dark border p-3  rounded">
             <h4 class=" text-light">কেন্দ্রীয় নির্বাচন</h4>
         </nav>
 
@@ -52,7 +52,7 @@
 
 
             <div style=" margin: 0 0  auto auto ;">
-                <a href="#" class="btn btn-success p-2 pl-4 pr-4 "> Start</a>
+                <a href="{{ route('electionsView') }}?id=5" class="btn btn-success p-2 pl-4 pr-4 "> Start</a>
             </div>
         </div>
 
@@ -61,16 +61,17 @@
 
 
     </section>
+    @endif
 
 
 
 
 
+    @if($campus->status==1)
 
-
-    <section class="container pt-4 border border-dark mt-4 mb-4">
-        <nav class="navbar navbar-light bg-abasas-dark">
-            <h4 class=" text-light">  সিলেট ইন্জিনিয়ারিং কলেজ নির্বাচন </h4>
+    <section class="container pt-4 border border-dark  rounded mt-4 mb-4">
+        <nav class="navbar navbar-light bg-abasas-dark border p-3  rounded ">
+            <h4 class=" text-light">  {{ $campus->name }} </h4>
         </nav>
 
         <div class="row p-4">
@@ -103,7 +104,7 @@
 
 
             <div style=" margin: 0 0  auto auto ;">
-                <a href="#" class="btn btn-success p-2 pl-4 pr-4 "> Start</a>
+                <a href="{{ route('electionsView')}}?id={{ $campus->id }}" class="btn btn-success p-2 pl-4 pr-4 "> Start</a>
             </div>
         </div>
 
@@ -113,7 +114,7 @@
 
     </section>
 
-
+@endif
 
 
 

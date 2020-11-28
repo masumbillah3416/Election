@@ -7,6 +7,7 @@ use App\designation;
 use App\election;
 use Illuminate\Http\Request;
 use Illuminate\Routing\SortedMiddleware;
+use Illuminate\Support\Facades\Auth;
 
 class ElectionController extends Controller
 {
@@ -49,6 +50,7 @@ class ElectionController extends Controller
      */
     public function show(election $election)
     {
+        return "hhah";
         //
     }
 
@@ -133,6 +135,24 @@ class ElectionController extends Controller
         
         return view('admin.election.index',compact('candidates','designations','center'));
         
+    }
+
+    public function electionsView(Request $request){
+        $user= Auth::user();
+        
+        if($request->id && $user->isVoter()){
+           if($request->id==5){
+               $election = election::find(5);
+           }
+           else{
+            $election = election::find($user->campus_id);
+           }
+           return view('election.show',compact('election'));
+
+        }
+        else{
+            abort(404);
+        }
     }
 
 

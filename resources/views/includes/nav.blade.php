@@ -19,7 +19,7 @@ style="
 	@guest
 	<a class="nav-link text-light" href="{{ route('login') }}">{{ __('Login') }}</a>
 	@else
-	<a class="dropdown-item text-light	font-weight-bold border border-light" href="{{ route('logout') }}"
+	<a class="dropdown-item text-light	 border border-light" href="{{ route('logout') }}"
 	onclick="event.preventDefault();
 				  document.getElementById('logout-form').submit();">
 	 {{ __('Logout') }}

@@ -1,6 +1,10 @@
 <?php
 
+use App\campus;
+use App\campusDesignation;
+use App\candidate;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,3 +35,62 @@ Route::get('/admin/varify-user/{id}','UserController@varifyUser')->name('varify-
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/elections','ElectionController@electionsView')->name('electionsView')->middleware('voter');
+
+
+
+
+Route::get('data-insert',function(){
+
+    $campuses = campus::all();
+    $campusDesignations = campusDesignation::all();
+    // return compact('campuses','campusDesignations');
+    
+    $low=-20 ; 
+    $high=5;
+
+    foreach($campuses as $campus){
+        $low += 25;
+        $high +=25;
+    
+   
+        foreach($campusDesignations as $campusDesignation){
+
+            DB::table('candidates')->insert([
+                [
+                    'user_id'=> rand($low,$high),
+                    'designation_id'=>$campusDesignation->id,
+                    'election_id' => $campus->id,
+                    'image' =>"https://www.w3schools.com/howto/img_avatar.png",
+                ],
+                [
+                    'user_id'=> rand(6,30),
+                    'designation_id'=>$campusDesignation->id,
+                    'election_id' => $campus->id,
+                    'image' =>"https://www.w3schools.com/howto/img_avatar.png",
+                ],
+                [
+                    'user_id'=> rand(6,30),
+                    'designation_id'=>$campusDesignation->id,
+                    'election_id' => $campus->id,
+                    'image' =>"https://www.w3schools.com/howto/img_avatar.png",
+                ],
+                [
+                    'user_id'=> rand(6,30),
+                    'designation_id'=>$campusDesignation->id,
+                    'election_id' => $campus->id,
+                    'image' =>"https://www.w3schools.com/howto/img_avatar.png",
+                ],  
+             
+    
+            ]);
+
+        }
+
+
+    }
+    return candidate::all();
+
+
+});
