@@ -17,6 +17,9 @@ class IndexController extends Controller
     public function index()
     {
         $user= Auth::user();
+        if($user->status ==0){
+            return view('deactiveUser');
+        }
         if($user->isVoter() )
         {
 
