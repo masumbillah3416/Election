@@ -19,12 +19,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
 
 Route::get('/','IndexController@index')->name('index')->middleware('auth');
-
+Route::resource('votes','VoteController')->middleware('voter');
 Route::get('/admin/elections/{campus}','ElectionController@elections')->name('elections')->middleware('commissioner');
 Route::get('/admin/voters','UserController@voters')->name('voters')->middleware('adminCommissioner');
 
@@ -49,14 +46,14 @@ Route::get('data-insert',function(){
     $campusDesignations = campusDesignation::all();
     // return compact('campuses','campusDesignations');
     
-    $low=-20 ; 
+    $low=-21 ; 
     $high=5;
 
     foreach($campuses as $campus){
         $low += 25;
         $high +=25;
     
-   
+        
         foreach($campusDesignations as $campusDesignation){
 
             DB::table('candidates')->insert([
@@ -67,19 +64,19 @@ Route::get('data-insert',function(){
                     'image' =>"https://www.w3schools.com/howto/img_avatar.png",
                 ],
                 [
-                    'user_id'=> rand(6,30),
+                    'user_id'=> rand($low,$high),
                     'designation_id'=>$campusDesignation->id,
                     'election_id' => $campus->id,
                     'image' =>"https://www.w3schools.com/howto/img_avatar.png",
                 ],
                 [
-                    'user_id'=> rand(6,30),
+                    'user_id'=> rand($low,$high),
                     'designation_id'=>$campusDesignation->id,
                     'election_id' => $campus->id,
                     'image' =>"https://www.w3schools.com/howto/img_avatar.png",
                 ],
                 [
-                    'user_id'=> rand(6,30),
+                    'user_id'=> rand($low,$high),
                     'designation_id'=>$campusDesignation->id,
                     'election_id' => $campus->id,
                     'image' =>"https://www.w3schools.com/howto/img_avatar.png",
