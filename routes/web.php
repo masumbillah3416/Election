@@ -26,7 +26,8 @@ Route::get('/admin/voters','UserController@voters')->name('voters')->middleware(
 Route::get('/admin','AdminController@index')->name('admin')->middleware('adminCommissioner');
 
 
-Route::get('/admin/varify-user/{id}','UserController@varifyUser')->name('varify-user');
+Route::get('/admin/varify-user/{id}','UserController@varifyUser')->name('varify-user')->middleware('admin');
+Route::get('/admin/cancel-varification/{id}','UserController@cancelVarify')->name('cancel-varification')->middleware('admin');
 
 Auth::routes();
 
