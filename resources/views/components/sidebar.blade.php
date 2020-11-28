@@ -5,7 +5,7 @@
 @if(Auth::user()->isAdmin())
 <hr class="sidebar-divider m-1 p-0 ">
 <li class="nav-item active ">
-    <a class="nav-link p-3 " href="{{ route('voters') }}">
+    <a class="nav-link p-3 firstClick" href="{{ route('voters') }}">
         <i class="fas fa-fw fa-tachometer-alt"></i>
         <span>Voters</span></a>
 </li>
@@ -27,7 +27,7 @@
     </div>
     <hr class="sidebar-divider m-1 p-0 ">
     <li class="nav-item  ">
-        <a class="nav-link p-3 " href="{{ route('voters',['campus_id'=>1]) }}">
+        <a class="nav-link p-3  firstClick" href="{{ route('voters',['campus_id'=>1]) }}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>SEC</span></a>
     </li>

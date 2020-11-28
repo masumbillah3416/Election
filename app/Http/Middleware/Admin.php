@@ -20,6 +20,6 @@ class Admin
 
             return $next($request);
         }
-        return "you are not allowed ";
+        abort(404);
     }
 }
