@@ -1,5 +1,5 @@
 <h1>
-You are Deactived User . olease contact Campus Admin
+You are Deactived User . Please contact Campus Admin
 </h1>
 
 @guest
