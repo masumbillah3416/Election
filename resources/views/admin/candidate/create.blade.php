@@ -10,14 +10,14 @@
 
         <div class="card mb-4 shadow">
 
-            <form method="POST" action="{{ route('candidates.store') }}">
+            <form method="POST" action="{{ route('candidates.store') }}" enctype="multipart/form-data">
                 @csrf
 
                 <div class="card-header py-3 bg-abasas-dark">
                     <nav class="navbar navbar-dark ">
                         <a class="navbar-brand">Add Candidate</a>
                         <button type="submit" id="createPostSubmit" class="btn btn-success btn-lg d-none d-md-block">
-                            Add</button>
+                            Submit</button>
 
                     </nav>
                 </div>

@@ -18,6 +18,8 @@
           <a href="{{ route('electionStatus') }}?id={{ $election->id }}" class="text-light"><button  class="btn btn-success" >Start</button></a>
         
             @endif --}}
+
+           <a href=" {{ route('candidates.index') }}"><button class="btn-lg btn-success">Add</button> </a>  
         </nav>
     </div>
     @foreach ($designations as $designation)
@@ -73,7 +75,7 @@
              
                     {{-- @if (isset($candidates[$id])) --}}
                      
-    @foreach ($candidates  as $ca)   
+       @foreach ($candidates  as $ca)   
                     @foreach ($ca as $candidate)
 
                     @if($candidate->designation_id ==$designation->id )

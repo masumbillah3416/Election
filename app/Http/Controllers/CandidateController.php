@@ -66,9 +66,9 @@ class CandidateController extends Controller
 
                         
                  
-                $fileName = time();
-                $picture = Image::make($request->image)->fit(500, 400);
-                $picture->save('images/'.$fileName);
+                 $fileName = time();
+               $picture = Image::make($request->image)->fit(500, 400);
+              $picture->save('images/'.$fileName);
 
                 $candidate -> image = 'image/'.$fileName;
                 $candidate->save();
