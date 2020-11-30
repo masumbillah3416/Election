@@ -50,7 +50,7 @@ $inValidVote = App\vote::where('designation_id',$designation->id)->where('electi
 
 
 
-    <section class="container pt-4">
+    <section class="container pt-4" id="id{{ $designation->id }}">
         <nav class="navbar navbar-light bg-abasas-dark">
             <h4 class=" text-light">{{ $designation->name }}</h4>
         </nav>
@@ -78,7 +78,7 @@ $inValidVote = App\vote::where('designation_id',$designation->id)->where('electi
                                 <input type="text" name="candidate_id" value="{{ $candidate->id }}"  hidden>
                                 <input type="text" name="designation_id" value="{{ $designation->id }}"  hidden>
                                 <input type="text" name="election_id" value="{{ $election->id }}"  hidden>
-                                <div class="btn bg-abasas-dark" id="submitVote" > Vote</div>
+                                <div class="btn bg-abasas-dark" data-form="{{ $designation->id }}"   id="submitVote" > Vote</div>
                             </form>
                         
                         </div>
@@ -105,11 +105,27 @@ $inValidVote = App\vote::where('designation_id',$designation->id)->where('electi
 
 @section('customJS')
     <script>
-$(document).on('click','submitVote',function(){
-    alert("vbnm")
-    var form = "#"+$(this).data('form');
-    console.log(form)
-    $(form).submit();
+$(document).on('click',"#submitVote",function(){
+    
+    var formId = "#form"+$(this).data('form');
+    var designation_id = $(this).data("form");
+    console.log(designation_id)
+    var frm= $(formId);
+    $.ajax({
+            type: frm.attr('method'),
+            url: frm.attr('action'),
+            data: frm.serialize(),
+            success: function (data) {
+                $("#id"+designation_id).hide();
+                
+            }, error: function (data) {
+                console.log('An error occurred.');
+                alert("ERROR :  You need to reload")
+                window.reload();
+                console.log(data);
+            },
+
+    });
     
 });
 
