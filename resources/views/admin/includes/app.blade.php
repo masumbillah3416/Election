@@ -187,8 +187,9 @@
 
 
 
+    @yield('customJS')
 
-
+    
 
 </body>
 

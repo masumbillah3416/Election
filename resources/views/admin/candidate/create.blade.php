@@ -46,7 +46,7 @@
 
                 <div class="card-header py-3 bg-abasas-dark">
                     <nav class="navbar navbar-dark ">
-                        <a class="navbar-brand">Add Candidate</a>
+                        <a class="navbar-brand">Add Cadndidate</a>
                         <button type="submit" id="createPostSubmit" class="btn btn-success btn-lg d-none d-md-block">
                             Submit</button>
 
@@ -58,20 +58,20 @@
 
                         <div class="col-12 col-md-8">
 
-                            <select class="form-control form-control-lg selectpicker" id="candidate" name="candidate_id" value="" required>
+                            <select class="form-control form-control-lg selectpicker" id="candidateSelect" name="candidate_id" value="" required>
                                 <option value="">Select Candidate</option>
                                 @foreach ( $users  as $user )
                                 
-                                <option value={{ $user->id }} >{{ $user->name }}</option>
+                                <option value={{ $user->id }} >{{ $user->name }} <span class="small">-- {{ $user->campus->name_short }}</span></option>
 
                                 @endforeach
                                     
                             </select>
                             <div class="pt-4 mt-4  p-4 bg-light ">
-                                <h2>  Lorem, ipsum dolor.</h2>
-                                <b> Email: Ruhul.ok@GMAIL.COM</b> <br>
-                                <b> Phone: 0125454545</b> <br>
-                                <b> Campus: Sylhet Engineering College</b>
+                                <h2 id="name" >  </h2>
+                                <b  id="email" > </b> <br>
+                                <b id="phone" > </b> <br>
+                                <b id="campus" ></b>
                               
 
                             </div>
@@ -151,4 +151,27 @@
 
 
 
+@endsection
+
+
+@section('customJS')
+<script>
+
+var users = @json($users);
+var elections = @json($elections);
+console.log(users)
+    $("#candidateSelect").on('change',function(){
+        var user_id = $("#candidateSelect").val().trim();
+
+
+       var user = users[user_id]
+
+       $("#name").text(user.name)
+        $("#email").text("Email : "+user.email)
+        $("#phone").text("Phone : "+user.phone)
+        $("#campus").text("Campus : "+elections[user.campus_id].name)
+    });
+
+
+</script>
 @endsection
