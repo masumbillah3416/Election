@@ -4,13 +4,44 @@
 @section('content')
 
 
+
+
+
+
+@if ($errors->any())
+<div class="alert alert-danger">
+    <ul>
+        @foreach ($errors->all() as $error)
+        <li>{{ $error }}</li>
+        @endforeach
+    </ul>
+</div>
+@endif
+
+@if (session()->has('success'))
+<div class="alert alert-success">
+    @if(is_array(session('success')))
+    <ul>
+        @foreach (session('success') as $message)
+        <li>{{  $message }}</li>
+        @endforeach
+    </ul>
+    @else
+    {{ session('success') }}
+    @endif
+</div>
+@endif
+
+
     <div class="container">
 
 
 
         <div class="card mb-4 shadow">
 
-            <form method="POST" action="{{ route('candidates.store') }}" enctype="multipart/form-data">
+                
+            
+            <form action="{{route('candidates.store')}}" method="post" role="form" enctype="multipart/form-data">
                 @csrf
 
                 <div class="card-header py-3 bg-abasas-dark">
@@ -92,8 +123,10 @@
 
 
 
-                            <label for="image">Upload image <span style="color: red"> * &nbsp;</span></label><i class="fa fa-info-circle"  title="Image Resulation: 600 X 375" aria-hidden="true"></i><br>
-                            <input type="file" name="image" id="image" accept=" .jpg, .jpeg" required >
+                            <label for="image">Upload image <span style="color: red"> * &nbsp;</span></label><i class="fa fa-info-circle"  title="Image Resulation: 300 X 300" aria-hidden="true"></i><br>
+                            {{-- <input type="file" name="image" id="image" accept=" .jpg, .jpeg" required > --}}
+                            
+                            <input type="file" name="file" class="form-control" accept=" .jpg, .jpeg, .png" required>
 
 {{--                           
                                 <div class="form-group">
