@@ -17,9 +17,16 @@
     <link rel="stylesheet" href="{{asset('css/admin/datatables.min.css')}}">
     <link rel="stylesheet" src="{{asset('bootstrap-select/css/bootstrap-select.min.css')}}">
 
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
-    <style>
+   
+
+    {{-- <link rel="stylesheet" href="{{ asset('chosen/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('chosen/prism.css') }}">
+    <link rel="stylesheet" href="{{ asset('chosen/chosen.min.css') }}"> --}}
+  
+   
+   
+   <style>
         .border-dotted {
             border-style: dotted;
             border-width: 3px;
@@ -103,63 +110,25 @@
     {{-- <script src="{{asset('js/admin/jquery.dataTables.min.js')}}"></script> --}}
     <script src="{{asset('js/admin/dataTables.min.js')}}"></script>
     {{-- <script src="{{asset('js/admin/dataTables.bootstrap4.min.js')}}"></script> --}}
-    <script src="{{asset('bootstrap-select/js/bootstrap-select.min.js')}}"></script>
 
 
 
 
     <script src="{{asset('js/abasas/app.js')}}"></script>
 
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
-   
+
+    {{-- <script src="{{asset('chosen/chosen.jquery.min.js') }}" type="text/javascript"></script>
+    <script src="{{asset('chosen/prism.js') }}" type="text/javascript" charset="utf-8"></script>
+    <script src="{{asset('chosen/init.js') }}" type="text/javascript" charset="utf-8"></script>
+     --}}
 </head>
 
 
 <body id="page-top">
 
-    {{-- 
-    <x-navbar>
 
-    </x-navbar> --}}
-
-
-
-    {{-- <div class="row">
-
-        <div class="col-2">
-            <x-sidebar />
-        </div>
-        <div class="col-10">
-
-
-
-
-            @yield('content')
-
-
-
-
-
-        </div>
-
-
-
-
-
-    </div>
-
-    </div>
-    <x-footer>
-
-    </x-footer>
-
-
-
-
-
- --}}
 
 
 
@@ -219,10 +188,6 @@
 
 
 
-    <script>
-  
-
-    </script>
 
 
 </body>

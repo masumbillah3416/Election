@@ -29,6 +29,7 @@
 
 		<!-- Modernizer js -->
         <script src="{{asset('abasas/js/vendor/modernizr-3.5.0.min.js')}}"></script>
+
 		<style>
             .bg-abasas-dark {
 

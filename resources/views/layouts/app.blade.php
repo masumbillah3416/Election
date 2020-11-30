@@ -12,12 +12,41 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 
+
+
+    <!-- Stylesheets -->
+		<link rel="stylesheet" href="{{asset('abasas/css/bootstrap.min.css')}}">
+        <link rel="stylesheet" href="{{asset('abasas/css/plugins.css')}}">
+        
+        
+    <!-- JS Files -->
+    <script src="{{asset('abasas/js/vendor/jquery-3.2.1.min.js')}}"></script>
+    <script src="{{asset('abasas/js/popper.min.js')}}"></script>
+    <script src="{{asset('abasas/js/bootstrap.min.js')}}"></script>
+    <script src="{{asset('abasas/js/plugins.js')}}"></script>
+    
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta/dist/css/bootstrap-select.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta/dist/js/bootstrap-select.min.js"></script>
+
+    <style>
+           .bg-abasas-dark {
+
+background-color: #2a3f5c !important;
+color: #fff;
+
+}
+    </style>
 </head>
 <body>
     <div id="app">

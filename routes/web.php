@@ -43,7 +43,12 @@ Route::get('/elections','ElectionController@electionsView')->name('electionsView
 Route::get('electionstatus','ElectionController@statusUp'
 )->name('electionStatus')->middleware('auth');
 
+Route::resource('candidates','CandidateController');
+
+
+
 Route::get('data-insert',function(){
+
 
     $campuses = campus::all();
     $campusDesignations = campusDesignation::all();
