@@ -10,6 +10,29 @@
 
 
 
+@if ($errors->any())
+<div class="alert alert-danger">
+    <ul>
+        @foreach ($errors->all() as $error)
+        <li>{{ $error }}</li>
+        @endforeach
+    </ul>
+</div>
+@endif
+
+@if (session()->has('success'))
+<div class="alert alert-success">
+    @if(is_array(session('success')))
+    <ul>
+        @foreach (session('success') as $message)
+        <li>{{  $message }}</li>
+        @endforeach
+    </ul>
+    @else
+    {{ session('success') }}
+    @endif
+</div>
+@endif
 
 
 
@@ -50,12 +73,12 @@ $inValidVote = App\vote::where('designation_id',$designation->id)->where('electi
                     </div>
                     <div class="card-footer ">
                         <div style=" margin: 0 auto;">
-                            <form action="{{ route('votes.store') }}" method="post">
+                            <form action="{{ route('votes.store') }}" id="form{{ $designation->id }}" method="post">
                                 @csrf
                                 <input type="text" name="candidate_id" value="{{ $candidate->id }}"  hidden>
                                 <input type="text" name="designation_id" value="{{ $designation->id }}"  hidden>
                                 <input type="text" name="election_id" value="{{ $election->id }}"  hidden>
-                                <input class="btn bg-abasas-dark" type="submit" value="Vote">
+                                <div class="btn bg-abasas-dark" id="submitVote" > Vote</div>
                             </form>
                         
                         </div>
@@ -78,4 +101,18 @@ $inValidVote = App\vote::where('designation_id',$designation->id)->where('electi
     @endforeach
 
     
+@endsection
+
+@section('customJS')
+    <script>
+$(document).on('click','submitVote',function(){
+    alert("vbnm")
+    var form = "#"+$(this).data('form');
+    console.log(form)
+    $(form).submit();
+    
+});
+
+
+    </script>
 @endsection

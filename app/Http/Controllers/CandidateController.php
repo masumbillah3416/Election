@@ -124,6 +124,8 @@ class CandidateController extends Controller
      */
     public function destroy(candidate $candidate)
     {
-        //
+        $candidate->delete();
+        
+        return back()->withSuccess(['Candidate Successfully Deleted ']);
     }
 }

@@ -317,6 +317,8 @@ color: #fff;
     <script src="{{asset('abasas/js/scripts.js')}}"></script>
     
     @yield('customJS')
+ 
+    
 
     
 </body>

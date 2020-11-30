@@ -3,6 +3,33 @@
 
 @section('content')
 
+
+
+@if ($errors->any())
+<div class="alert alert-danger">
+    <ul>
+        @foreach ($errors->all() as $error)
+        <li>{{ $error }}</li>
+        @endforeach
+    </ul>
+</div>
+@endif
+
+@if (session()->has('success'))
+<div class="alert alert-success">
+    @if(is_array(session('success')))
+    <ul>
+        @foreach (session('success') as $message)
+        <li>{{  $message }}</li>
+        @endforeach
+    </ul>
+    @else
+    {{ session('success') }}
+    @endif
+</div>
+@endif
+
+
  <div class="card shadow mb-4">
 
     <div class="card-header py-3 bg-abasas-dark">
@@ -46,6 +73,7 @@
                         <th>Designation</th>
                         <th>Campus</th>
                         <th>Votes</th>
+                        <th>Action</th>
 
                     </tr>
                 </thead>
@@ -58,6 +86,7 @@
                         <th>Designation</th>
                         <th>Campus</th>
                         <th>Votes</th>
+                        <th>Action</th>
 
                     </tr>
 
@@ -87,10 +116,29 @@
                         <td class="word-break">{{ $candidate->user->campus->name }}</td>
                         <td class="word-break">{{ $candidate->votes_count }}</td>
 
-
+<td>
                   
+                        <form method="POST" action="{{ route('candidates.destroy',  $candidate->id )}} " id="delete-form-{{ $candidate->id }}" style="display:none; ">
+                            {{csrf_field() }}
+                            {{ method_field("delete") }}
+                        </form>
 
 
+
+
+                        <button onclick="if(confirm('are you sure to delete this')){
+        document.getElementById('delete-form-{{ $candidate->id }}').submit();
+    }
+    else{
+        event.preventDefault();
+    }
+    " class="btn btn-danger btn-sm btn-raised">
+                            <i class="fa fa-trash" aria-hidden="false">
+
+                            </i>
+                        </button>
+
+</td>
                     </tr>
                     @endif
                     @endforeach
