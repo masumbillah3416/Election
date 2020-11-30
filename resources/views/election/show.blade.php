@@ -88,6 +88,7 @@ $inValidVote = App\vote::where('designation_id',$designation->id)->where('electi
             </div>
 
     @endif   
+    
 @endforeach 
 
         </div>
