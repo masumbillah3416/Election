@@ -73,12 +73,12 @@ $inValidVote = App\vote::where('designation_id',$designation->id)->where('electi
                     </div>
                     <div class="card-footer ">
                         <div style=" margin: 0 auto;">
-                            <form action="{{ route('votes.store') }}" id="form{{ $designation->id }}" method="post">
+                            <form action="{{ route('votes.store') }}" id="form{{ $candidate->id }}" method="post">
                                 @csrf
                                 <input type="text" name="candidate_id" value="{{ $candidate->id }}"  hidden>
                                 <input type="text" name="designation_id" value="{{ $designation->id }}"  hidden>
                                 <input type="text" name="election_id" value="{{ $election->id }}"  hidden>
-                                <div class="btn bg-abasas-dark" data-form="{{ $designation->id }}"   id="submitVote" > Vote</div>
+                                <div class="btn bg-abasas-dark" data-form="{{ $candidate->id }}"  data-designation="{{ $designation->id }}"   id="submitVote" > Vote</div>
                             </form>
                         
                         </div>
@@ -109,8 +109,10 @@ $inValidVote = App\vote::where('designation_id',$designation->id)->where('electi
 $(document).on('click',"#submitVote",function(){
     
     var formId = "#form"+$(this).data('form');
-    var designation_id = $(this).data("form");
+    var designation_id = $(this).data("designation");
     console.log(designation_id)
+    console.log(formId)
+    console.log($(this))
     var frm= $(formId);
     $.ajax({
             type: frm.attr('method'),
