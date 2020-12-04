@@ -124,7 +124,7 @@ $(document).on('click',"#submitVote",function(){
             }, error: function (data) {
                 console.log('An error occurred.');
                 alert("ERROR :  You need to reload")
-                window.reload();
+                location.reload(); 
                 console.log(data);
             },
 
