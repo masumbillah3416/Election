@@ -62,7 +62,7 @@
                                 <option value="">Select Candidate</option>
                                 @foreach ( $users  as $user )
                                 
-                                <option value={{ $user->id }} >{{ $user->name }} <span class="small">-- {{ $user->campus->name_short }}</span></option>
+                                <option value={{ $user->id }} > {{ $user->name }} <span class="small">-- {{ $user->campus->name_short }}</span></option>
 
                                 @endforeach
                                     
@@ -163,13 +163,21 @@ console.log(users)
     $("#candidateSelect").on('change',function(){
         var user_id = $("#candidateSelect").val().trim();
 
-
-       var user = users[user_id]
-
-       $("#name").text(user.name)
+        $.each( users, function( key,user) {
+            console.log(user);
+            console.log(key);
+            console.log(user_id+ " "+ user.id)
+  if(user.id==user_id){
+     
+      $("#name").text( user.name)
         $("#email").text("Email : "+user.email)
         $("#phone").text("Phone : "+user.phone)
-        $("#campus").text("Campus : "+elections[user.campus_id].name)
+        $("#campus").text("Campus : "+elections[user.campus_id -1 ].name)
+  }
+});
+       
+
+
     });
 
 
