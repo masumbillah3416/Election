@@ -61,7 +61,7 @@ $inValidVote = App\vote::where('designation_id',$designation->id)->where('electi
 @if($designation->id == $candidate->designation_id )
             <div class="col-md-3 col-12 p-4 " >
                 <div class="card"  >
-                    <img class="card-img-top" src="{{ asset(  'image/'.$candidate->image) }}" alt="Card image cap" style="width:100%;">
+                    <img class="card-img-top"  src="{{ asset(  'public/image/'.$candidate->image) }}" alt="Card image cap" style="width:100%;">
                     <div class="card-body">
                         
                 <div class="card-title">{{$candidate->user->name }}</div>
