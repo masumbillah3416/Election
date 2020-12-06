@@ -111,7 +111,7 @@ color: #fff;
             </div>
             <div class="col-8 small text-danger">
 
-                Do you need any help ?  <a href="{{ asset("pdf/voter.pdf") }}" target="_blank"> View  tutorial</a>
+                Do you need any help ?  <a href="{{ asset("public/pdf/voter.pdf") }}" target="_blank"> View  tutorial</a>
             </div>
         </div>
         
