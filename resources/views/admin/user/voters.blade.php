@@ -85,11 +85,29 @@
     $(document).ready(function(){
 
 
-        $('.DataTableTest').DataTable({   
-                    dom: 'lBfrtip',
-                    buttons: [
-                        'copy', 'csv', 'excel' , 'pdf' , 'print'
-                    ]
+        $('.DataTableTest').DataTable({  
+
+                    // dom: 'lBfrtip',
+                    // buttons: [
+                    //     'copy', 'csv', 'excel' , 'pdf' , 'print'
+                    // ]
+
+                    dom: 'Bfrtip',
+        buttons: [
+            {
+                extend: 'excelHtml5',
+                title: 'Voters of {{ $campus->name }}'
+            },
+            {
+                extend: 'print',
+                title: 'Voters of {{ $campus->name }}'
+            },
+            {
+                extend: 'pdfHtml5',
+                title: 'Voters of {{ $campus->name }}'
+            }
+        ]
+
                 });
 
 

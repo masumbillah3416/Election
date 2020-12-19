@@ -62,7 +62,7 @@
     <div class="card-body">
    
         <div class="table-responsive">
-            <table class="table table-striped table-bordered DataTableTest" id="dataTable" width="100%" cellspacing="0">
+            <table class="table table-striped table-bordered DataTableTestdataTable{{ $designation->id }}"  width="100%" cellspacing="0">
                 <thead class="bg-abasas-dark">
 
                     <tr>
@@ -152,24 +152,45 @@
         </div>
     </div>
     
+
+    <script>
+        $(document).ready(function(){
+    
+    
+            $('.DataTableTestdataTable{{ $designation->id }}').DataTable({  
+    
+                        // dom: 'lBfrtip',
+                        // buttons: [
+                        //     'copy', 'csv', 'excel' , 'pdf' , 'print'
+                        // ]
+    
+                        dom: 'Bfrtip',
+            buttons: [
+                {
+                    extend: 'excelHtml5',
+                    title: '{{ $center }} - {{ $designation->name }}'
+                },
+                {
+                    extend: 'print',
+                    title: '{{ $center }} - {{ $designation->name }}'
+                },
+                {
+                    extend: 'pdfHtml5',
+                    title: '{{ $center }} - {{ $designation->name }}'
+                }
+            ]
+    
+                    });
+    
+    
+        });
+    </script>
+
     @endforeach
 </div> 
 
 
-<script>
-    $(document).ready(function(){
 
-
-        $('.DataTableTest').DataTable({   
-                    dom: 'lBfrtip',
-                    buttons: [
-                        'copy', 'csv', 'excel' , 'pdf' , 'print'
-                    ]
-                });
-
-
-    });
-</script>
 
 
 @endsection
