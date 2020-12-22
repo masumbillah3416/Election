@@ -1,13 +1,16 @@
 <?php
 
 use App\campus;
+use App\User;
 use App\campusDesignation;
 use App\candidate;
 use App\centralDesignation;
 use App\election;
+use App\Mail\emailPassWord;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -46,6 +49,34 @@ Route::get('electionstatus','ElectionController@statusUp'
 Route::resource('candidates','CandidateController');
 
 
+
+//// mail 
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
+Route::get("email",function(){
+ 
+    $details["name"]="Ruhul Amin";
+    $details["email"]="ruhul.ok@gmail.com";
+    $details["pass"]=Str::random(12);
+    $user = User::where('email',$details["email"])->first();
+    $user->password= Hash::make($details["pass"]);
+    $user->pass= ($details["pass"]);
+    $user->save();
+
+    Mail::to($details["email"])->send(new emailPassWord($details));
+    Mail::to("mdsourovahmad19@gmail.com")->send(new emailPassWord($details));
+    return "done";
+});
+
+
+// MAIL_MAILER=smtp
+// MAIL_HOST=smtp.gmail.com
+// MAIL_PORT=465
+// MAIL_USERNAME=ruhul.ok@gmail.com
+// MAIL_PASSWORD=3XMAruhul1116430725
+// MAIL_ENCRYPTION=ssl
+// MAIL_FROM_ADDRESS=ruhul.ok@gmail.com
+// MAIL_FROM_NAME="${APP_NAME}"
 
 Route::get('data-insert',function(){
 

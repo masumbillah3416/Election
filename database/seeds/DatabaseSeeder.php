@@ -36,7 +36,8 @@ class DatabaseSeeder extends Seeder
                 'phone' => '01840000108',
                 'email' => 'ruhul.ok@abasas.tech',
                 'status' => '1',
-                'password' => Hash::make(1234),
+                "pass" => Str::random(12),
+                'password' => Hash::make("1234"),
             ],   
              [
                 'campus_id' => '1',
@@ -45,6 +46,7 @@ class DatabaseSeeder extends Seeder
                 'phone' => '01840000108',
                 'email' => 'ruhul.ok2@abasas.tech',
                 'status' => '1',
+                "pass" => Str::random(12),
                 'password' => Hash::make(1234),
             ],
 
@@ -55,6 +57,7 @@ class DatabaseSeeder extends Seeder
                 'phone' => '01840000108',
                 'email' => 'secadmin@abasas.tech',
                 'status' => '1',
+                "pass" => Str::random(12),
                 'password' => Hash::make(1234),
             ],
            
@@ -66,6 +69,7 @@ class DatabaseSeeder extends Seeder
                 'phone' => '01840000108',
                 'email' => 'mecadmin@abasas.tech',
                 'status' => '1',
+                "pass" => Str::random(12),
                 'password' => Hash::make(1234),
             ],
            
@@ -77,6 +81,7 @@ class DatabaseSeeder extends Seeder
                 'phone' => '01840000108',
                 'email' => 'fecadmin@abasas.tech',
                 'status' => '1',
+                "pass" => Str::random(12),
                 'password' => Hash::make(1234),
             ],
            
@@ -88,20 +93,183 @@ class DatabaseSeeder extends Seeder
                 'phone' => '01840000108',
                 'email' => 'becadmin@abasas.tech',
                 'status' => '1',
+                "pass" => Str::random(12),
                 'password' => Hash::make(1234),
             ],
            
            
             [
-                'campus_id' => '5',
-                'role_id' => '3',
-                'name' => 'commissioner Admin',
-                'phone' => '01840000108',
-                'email' => 'commissioner@abasas.tech',
-                'status' => '1',
+                'campus_id' => '1',
+                'role_id' => '1',
+                'email' => 'roufmsc@gmail.com',
+                'status' => '0',
+                "pass" => Str::random(12),
                 'password' => Hash::make(1234),
             ],
            
+           
+           
+           
+            [
+                'campus_id' => '1',
+                'role_id' => '1',
+                'email' => 'shepon086@gmail.com',
+                'status' => '0',
+                "pass" => Str::random(12),
+                'password' => Hash::make(1234),
+            ],
+           
+           
+           
+           
+            [
+                'campus_id' => '1',
+                'role_id' => '1',
+                'email' => 'abu.naser84@gmail.com',
+                'status' => '0',
+                "pass" => Str::random(12),
+                'password' => Hash::make(1234),
+            ],
+           
+           
+           
+           
+            [
+                'campus_id' => '1',
+                'role_id' => '1',
+                'email' => 'lysucse10@gmail.com',
+                'status' => '0',
+                "pass" => Str::random(12),
+                'password' => Hash::make(1234),
+            ],
+           
+           
+           
+           
+            [
+                'campus_id' => '1',
+                'role_id' => '1',
+                'email' => 'nayannathcse@gmail.com',
+                'status' => '0',
+                "pass" => Str::random(12),
+                'password' => Hash::make(1234),
+            ],
+           
+           
+           
+           
+            [
+                'campus_id' => '1',
+                'role_id' => '1',
+                'email' => 'shahidiqbal_05@yahoo.com',
+                'status' => '0',
+                "pass" => Str::random(12),
+                'password' => Hash::make(1234),
+            ],
+           
+           
+           
+           
+            [
+                'campus_id' => '1',
+                'role_id' => '1',
+                'email' => 'salman.eee.1450@gmail.com',
+                'status' => '0',
+                "pass" => Str::random(12),
+                'password' => Hash::make(1234),
+            ],
+           
+           
+           
+           
+            [
+                'campus_id' => '1',
+                'role_id' => '1',
+                'email' => 'ashraful6003@gmail.com',
+                'status' => '0',
+                "pass" => Str::random(12),
+                'password' => Hash::make(1234),
+            ],
+           
+           
+           
+           
+            [
+                'campus_id' => '1',
+                'role_id' => '1',
+                'email' => 'asadbuet14@gmail.com',
+                'status' => '0',
+                "pass" => Str::random(12),
+                'password' => Hash::make(1234),
+            ],
+           
+           
+           
+           
+            [
+                'campus_id' => '1',
+                'role_id' => '1',
+                'email' => 'sibbircuet08@gmail.com',
+                'status' => '0',
+                "pass" => Str::random(12),
+                'password' => Hash::make(1234),
+            ],
+           
+           
+           
+           
+            [
+                'campus_id' => '1',
+                'role_id' => '1',
+                'email' => 'atiqulh18@gmail.com',
+                'status' => '0',
+                "pass" => Str::random(12),
+                'password' => Hash::make(1234),
+            ],
+           
+           
+           
+           
+            [
+                'campus_id' => '1',
+                'role_id' => '1',
+                'email' => 'shahjamal2106@gmail.com',
+                'status' => '0',
+                "pass" => Str::random(12),
+                'password' => Hash::make(1234),
+            ],
+           
+           
+           
+           
+            [
+                'campus_id' => '1',
+                'role_id' => '1',
+                'email' => 'rupa.siu@gmail.com',
+                'status' => '0',
+                "pass" => Str::random(12),
+                'password' => Hash::make(1234),
+            ], 
+           
+            [
+                'campus_id' => '1',
+                'role_id' => '1',
+                'email' => 'na.sakibd@yahoo.com',
+                'status' => '0',
+                "pass" => Str::random(12),
+                'password' => Hash::make(1234),
+            ], 
+           
+            [
+                'campus_id' => '1',
+                'role_id' => '1',
+                'email' => 'njsnusrat@gmail.com',
+                'status' => '0',
+                "pass" => Str::random(12),
+                'password' => Hash::make(1234),
+            ], 
+           
+         
            
            
 
@@ -152,39 +320,39 @@ class DatabaseSeeder extends Seeder
             [
                 'name' => 'সভাপতি',
             ],
-            [
-                'name' => 'সহ-সভাপতি',
-            ],
-            [
-                'name' => 'সাধারণ সম্পাদক',
-            ],
-            [
-                'name' => 'যুগ্ন সাধারণ সম্পাদক',
-            ],
-            [
-                'name' => 'সাংগঠনিক সম্পাদক',
-            ],
-            [
-                'name' => 'অর্থ সম্পাদক/কোষাধক্ষ',
-            ],
-            [
-                'name' => 'দপ্তর সম্পাদক',
-            ],
-            [
-                'name' => 'প্রচার ও প্রকাশনা সম্পাদক',
-            ],
+            // [
+            //     'name' => 'সহ-সভাপতি',
+            // ],
+            // [
+            //     'name' => 'সাধারণ সম্পাদক',
+            // ],
+            // [
+            //     'name' => 'যুগ্ন সাধারণ সম্পাদক',
+            // ],
+            // [
+            //     'name' => 'সাংগঠনিক সম্পাদক',
+            // ],
+            // [
+            //     'name' => 'অর্থ সম্পাদক/কোষাধক্ষ',
+            // ],
+            // [
+            //     'name' => 'দপ্তর সম্পাদক',
+            // ],
+            // [
+            //     'name' => 'প্রচার ও প্রকাশনা সম্পাদক',
+            // ],
 
-            [
-                'name' => 'সাহিত্য ও সংস্কৃতিক সম্পাদক',
-            ],
+            // [
+            //     'name' => 'সাহিত্য ও সংস্কৃতিক সম্পাদক',
+            // ],
 
-            [
-                'name' => 'মহিলা বিষয়ক সম্পাদক',
-            ],
+            // [
+            //     'name' => 'মহিলা বিষয়ক সম্পাদক',
+            // ],
 
-            [
-                'name' => 'শিক্ষা ও গবেষনা সম্পাদক',
-            ],
+            // [
+            //     'name' => 'শিক্ষা ও গবেষনা সম্পাদক',
+            // ],
 
         ]);
 
