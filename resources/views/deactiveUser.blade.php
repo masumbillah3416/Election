@@ -8,7 +8,7 @@ You are Deactived User . Please contact Campus Admin
 <a class="dropdown-item text-light	 border border-light" href="{{ route('logout') }}"
 onclick="event.preventDefault();
               document.getElementById('logout-form').submit();">
- {{ __('Logout') }}
+ <h3>{{ __('Logout') }}</h3>
 </a>
 @endguest
 
