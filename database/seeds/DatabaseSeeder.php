@@ -96,7 +96,8 @@ class DatabaseSeeder extends Seeder
                 "pass" => Str::random(12),
                 'password' => Hash::make(1234),
             ],
-           
+        ]);
+        DB::table('users')->insert([ 
            
             [
                 'campus_id' => '1',
