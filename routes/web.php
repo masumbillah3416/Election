@@ -29,6 +29,7 @@ Route::get('/','IndexController@index')->name('index')->middleware('auth');
 Route::resource('votes','VoteController')->middleware('voter');
 Route::get('/admin/elections/{campus}','ElectionController@elections')->name('elections')->middleware('commissioner');
 Route::get('/admin/voters','UserController@voters')->name('voters')->middleware('adminCommissioner');
+Route::get('/admin/votes','VoteController@index')->name('votes')->middleware('adminCommissioner');
 
 Route::get('/admin','AdminController@index')->name('admin')->middleware('adminCommissioner');
 
