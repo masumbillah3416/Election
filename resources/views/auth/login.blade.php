@@ -12,7 +12,14 @@
 		<link rel="stylesheet" href="{{asset('abasas/css/bootstrap.min.css')}}">
 		<link rel="stylesheet" href="{{asset('abasas/css/plugins.css')}}">
 
-    
+    <style>
+                  .bg-abasas-dark {
+
+background-color: #2a3f5c !important;
+color: #fff;
+
+}
+    </style>
 </head>
 <body>
 
@@ -22,9 +29,9 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">{{ __('Login') }}</div>
+                    <div class="card-header bg-abasas-dark">{{ __('Login') }}</div>
     
-                    <div class="card-body">
+                    <div class="card-body pb-4 mb-4">
                         <form method="POST" action="{{ route('login') }}">
                             @csrf
     
@@ -63,7 +70,15 @@
     
                                         <label class="form-check-label" for="remember">
                                             {{ __('Remember Me') }}
+
+                                    
                                         </label>
+                                        <label class="form-check-label" for="remember">
+                                          
+                                            <a class="text-danger" href="{{ route('password.request') }}"> Reset Your Password</a>
+                                    
+                                        </label>
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -73,21 +88,35 @@
                                     <button type="submit" class="btn btn-success">
                                         {{ __('Login') }}
                                     </button>
+                               
+                            
     
                                     @if (Route::has('register'))
                                     
-                                    <a href="{{ route('register') }}"><button type="button" class="btn btn-primary">
+                                    <a href="{{ route('register') }}"><button type="button" class="btn bg-abasas-dark">
                                         {{ __('Register') }}
                                     </button></a>
                                 @endif
+
+                    
                                 </div>
                             </div>
                         </form>
+                        
+                        <br>
+                        <br>
+                     
                     </div>
                 </div>
             </div>
+            <div class="col-8 small text-danger">
+
+                Do you need any help ?  <a href="{{ asset("public/pdf/voter.pdf") }}" target="_blank"> View  tutorial</a>
+            </div>
         </div>
+        
     </div>
+    
     
     <!-- JS Files -->
     <script src="{{asset('abasas/js/vendor/jquery-3.2.1.min.js')}}"></script>

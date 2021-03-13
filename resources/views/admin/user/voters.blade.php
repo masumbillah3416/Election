@@ -18,7 +18,7 @@
     <div class="card-body">
 
         <div class="table-responsive">
-            <table class="table table-striped table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <table class="table table-striped table-bordered DataTableTest" id="dataTable" width="100%" cellspacing="0">
                 <thead class="bg-abasas-dark">
 
                     <tr>
@@ -80,6 +80,39 @@
     </div>
 </div>
 
+
+<script>
+    $(document).ready(function(){
+
+
+        $('.DataTableTest').DataTable({  
+
+                    // dom: 'lBfrtip',
+                    // buttons: [
+                    //     'copy', 'csv', 'excel' , 'pdf' , 'print'
+                    // ]
+
+                    dom: 'Bfrtip',
+        buttons: [
+            {
+                extend: 'excelHtml5',
+                title: 'Voters of {{ $campus->name }}'
+            },
+            {
+                extend: 'print',
+                title: 'Voters of {{ $campus->name }}'
+            },
+            {
+                extend: 'pdfHtml5',
+                title: 'Voters of {{ $campus->name }}'
+            }
+        ]
+
+                });
+
+
+    });
+</script>
 
 
 @endsection

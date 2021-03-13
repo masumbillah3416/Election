@@ -21,7 +21,8 @@ class Commissioner
 
             return $next($request);
         }
-        return "you are not allowed ";
+        else
+        abort(404);
         
     }
 }

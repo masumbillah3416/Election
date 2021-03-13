@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\candidate;
+use App\designation;
+use App\election;
 use App\vote;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class VoteController extends Controller
 {
@@ -14,7 +18,10 @@ class VoteController extends Controller
      */
     public function index()
     {
-        //
+        $votes= vote::all();
+    
+       
+        return view("admin.votes.index",compact('votes'));
     }
 
     /**
@@ -35,7 +42,49 @@ class VoteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user = Auth::user()->id;
+        $election_id = $request->election_id;
+        if( $election_id == 5){
+            $inValidVote = vote::where('designation_id',$request->designation_id)->where('election_id',5)->where('user_id',$user)->first();
+       
+            if(  isset($inValidVote->designation_id)){
+                abort(404);
+            }
+
+            else{
+                
+                $vote= new vote;
+                $vote->user_id= $user;
+                $vote->election_id= $election_id;
+                $vote->designation_id= $request->designation_id;
+                $vote->candidate_id= $request->candidate_id;
+                $vote->save();
+                return back();
+            }
+ 
+        }
+        else{
+            $election_id = Auth::user()->campus->id;
+            
+            $inValidVote= vote::where('designation_id',$request->designation_id)->where('election_id',$election_id)->where('user_id',$user)->first();
+            if(  isset($inValidVote->designation_id)){
+                abort(404);
+            }
+            else{
+                $vote= new vote;
+                $vote->user_id= $user;
+                $vote->election_id= $election_id;
+                $vote->designation_id= $request->designation_id;
+                $vote->candidate_id= $request->candidate_id;
+                $vote->save();
+                return back();
+
+            }
+
+        }
+        abort(404);
+        
+        
     }
 
     /**

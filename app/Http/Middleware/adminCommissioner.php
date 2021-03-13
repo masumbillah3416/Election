@@ -20,6 +20,6 @@ class adminCommissioner
 
             return $next($request);
         }
-        return "not Allowed";
+        return redirect(route('index'));
     }
 }

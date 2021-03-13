@@ -1,7 +1,7 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/mumixhqm/demos.abasas.tech/website/election
+    - export DEPLOYPATH=/home/mumixhqm/election2020.abasas.tech
     # - export DEPLOYPATH=/home/masjeebl/dev.masjidmissioncenterusa.org
     - /bin/cp -r * $DEPLOYPATH #copy all from root
     # - /bin/cp -r ./public/* $DEPLOYPATH/

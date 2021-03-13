@@ -2,10 +2,21 @@
 <ul class="navbar-nav bg-abasas-dark  sidebar sidebar-dark accordion sidebar-toggled " id="accordionSidebar">
 {{-- for campus Admin --}}
 
-@if(Auth::user()->isAdmin())
-<hr class="sidebar-divider m-1 p-0 ">
+
+{{-- @if(Auth::user()->isCommissioner())
+
+
 <li class="nav-item active ">
-    <a class="nav-link p-3 " href="{{ route('voters') }}">
+    <a class="nav-link p-3 firstClick bg-success" href="{{ route('voters') }}">
+        <i class="fas fa-fw fa-tachometer-alt"></i>
+        <span>Start Vote</span></a>
+</li>
+@endif --}}
+
+
+@if(Auth::user()->isAdmin())
+<li class="nav-item active ">
+    <a class="nav-link p-3 firstClick" href="{{ route('voters') }}">
         <i class="fas fa-fw fa-tachometer-alt"></i>
         <span>Voters</span></a>
 </li>
@@ -14,7 +25,6 @@
 @if(Auth::user()->isCommissioner())
 
 <!-- Divider -->
-<hr class="sidebar-divider m-1 p-0 ">
 
 
 
@@ -27,7 +37,7 @@
     </div>
     <hr class="sidebar-divider m-1 p-0 ">
     <li class="nav-item  ">
-        <a class="nav-link p-3 " href="{{ route('voters',['campus_id'=>1]) }}">
+        <a class="nav-link p-3  firstClick" href="{{ route('voters',['campus_id'=>1]) }}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>SEC</span></a>
     </li>

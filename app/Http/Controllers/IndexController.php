@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\campus;
+use App\election;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class IndexController extends Controller
 {
@@ -13,7 +16,19 @@ class IndexController extends Controller
      */
     public function index()
     {
-        return view('index');
+        $user= Auth::user();
+        if($user->status ==0){
+            return view('deactiveUser');
+        }
+        if($user->isVoter() )
+        {
+
+            $campus= election::find($user->campus_id);
+            $central = election::find(5);
+            return view('index',compact('campus','central'));
+        }
+        return redirect(route('admin'));
+        
     }
 
     /**

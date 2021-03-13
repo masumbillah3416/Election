@@ -2,8 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\campusDesignation;
 use App\candidate;
+use App\centralDesignation;
+use App\election;
+use App\User;
 use Illuminate\Http\Request;
+
+use Intervention\Image\ImageManagerStatic as Image;
 
 class CandidateController extends Controller
 {
@@ -14,7 +20,12 @@ class CandidateController extends Controller
      */
     public function index()
     {
-        //
+
+        $users = User::where("role_id", 1)->where('status', 1)->get();
+        $campusDesignation =  campusDesignation::all();
+        $centralDesignation = centralDesignation::all();
+        $elections = election::all();
+        return view('admin.candidate.create', compact('users', 'campusDesignation', 'centralDesignation', 'elections'));
     }
 
     /**
@@ -35,7 +46,40 @@ class CandidateController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // return $request;
+
+
+        Image::configure(array('driver' => 'imagick'));
+
+
+
+        $existCandidate = candidate::where('designation_id', $request->designation_id)->where('election_id', $request->election_id)->where('user_id', $request->candidate_id)->first();
+        //    return $existCandidate->designation_id;
+        if (isset($existCandidate->designation_id)) {
+            return "You Already Add this Candidate";
+        } else {
+            $candidate = new candidate;
+            $candidate->user_id = $request->candidate_id;
+            $candidate->designation_id = $request->designation_id;
+            $candidate->election_id = $request->election_id;
+
+
+
+            //      $fileName = time();
+            //    $picture = Image::make($request->image)->fit(500, 400);
+            //   $picture->save('images/'.$fileName);
+
+            //     $candidate -> image = 'image/'.$fileName;
+
+
+            $fileName = time() . '.abasas' . $request->file->getClientOriginalName();
+            $request->file->move(public_path('image'), $fileName);
+            $candidate->image = $fileName;
+
+            $candidate->save();
+
+            return back()->withSuccess(['Candidate Successfully Created ']);
+        }
     }
 
     /**
@@ -80,6 +124,8 @@ class CandidateController extends Controller
      */
     public function destroy(candidate $candidate)
     {
-        //
+        $candidate->delete();
+        
+        return back()->withSuccess(['Candidate Successfully Deleted ']);
     }
 }
